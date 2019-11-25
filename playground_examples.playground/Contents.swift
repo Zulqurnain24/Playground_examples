@@ -27,3 +27,40 @@ func get(_ n: Int) -> Int {
 }
 
 print("\(get(5))")
+
+
+//Q3-balancing the brackets problem
+import Foundation
+
+func isBalanced(sequence: String) -> Bool {
+    var stack = ""
+    for bracket in sequence {
+        switch bracket {
+            case "{", "[", "(":
+            stack.append(bracket)
+            case "}", "]", ")":
+            if stack.isEmpty
+            || (bracket == "}" && stack.last != "{")
+            || (bracket == "]" && stack.last != "[")
+            || (bracket == ")" && stack.last != "(") {
+                return false
+            }
+            stack.removeLast()
+            default:
+            fatalError("unknown bracket found")
+        }
+    }
+    return stack.isEmpty
+}
+
+func braces(values: [String]) -> [String] {
+    var resultArray = [String]()
+    for i in 0...(values.count - 1) {
+        resultArray.append(isBalanced(sequence: values[i] ) ? "YES" : "NO")
+    }
+
+    return resultArray
+}
+
+print("\(braces(values: "({[]})"))")
+
