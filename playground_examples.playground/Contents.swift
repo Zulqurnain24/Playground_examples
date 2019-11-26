@@ -17,7 +17,27 @@ func fibonacciRecursiveNum1(num1: Int, num2: Int, steps: Int) {
     }
 }
 fibonacciRecursiveNum1(num1: 0, num2: 1, steps: 7)
+//Time Complexity: O(2^n)
+//Space Complexity: O(2^n)
 
+func fib(_ n: Int) -> Int {
+    var M = [[1, 1], [1, 0]]
+    guard n > 2 else { return n }
+    power(&M, n)
+    return M[0][0]
+}
+func power(_ matrix: inout [[Int]], _ n: Int) {
+    guard n > 1 else { return }
+    power(&matrix, n/2)
+    matrix = multiply(matrix, matrix)
+    if n % 2 != 0 {
+        let M = [[1, 1], [1, 0]]
+        matrix = multiply(matrix, M)
+    }
+}
+fib(7)
+//Time Complexity: O(log n)
+//Space Complexity: O(log n) , because of recursion stack
 
 //Q2-Write a program that writes 3 when 5 is input and 5 when 3 is input without using any sort of condition logic
 
