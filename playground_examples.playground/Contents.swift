@@ -84,3 +84,45 @@ func braces(values: [String]) -> [String] {
 
 print("\(braces(values: "({[]})"))")
 
+//Find smallest positive integer
+//
+//public func find_solution(_ Array : inout [Int]) -> Int
+//
+//given an array Array of N integers, returns the smallest positive integer (> than 0) that does not occur in A.
+//
+//For example, given A = [1, 3, 6, 4, 1, 2], the function should return 5.
+//
+//Given A = [1, 2, 3], the function should return 4.
+//
+//Given A = [−1, −3], the function should return 1.
+//
+//Write an efficient algorithm for the following assumptions:
+//
+//N is an integer within the range [1..100,000];
+//each element of array A is an integer within the range [−1,000,000..1,000,000].
+
+import UIKit
+
+public func solution(_ A : inout [Int]) -> Int {
+    let distinctArray = Array(Set(A)).sorted(by: { $0 < $1 })
+    var min = 1
+    
+    for i in (0...distinctArray.count - 1) {
+        if distinctArray[i] > 0 {
+             if i + 1 <= (distinctArray.count - 1), distinctArray[i] !=  distinctArray[i + 1] - 1 {
+                     return  distinctArray[i] + 1
+                 } else {
+                    min =  distinctArray[(distinctArray.count - 1)] + 1
+            }
+        }
+    }
+    return min
+}
+
+var A =  [1, 3, 6, 4, 1, 2]
+solution(&A)
+ A = [1, 2, 3]
+solution(&A)
+ A = [-1, -3]
+solution(&A)
+
