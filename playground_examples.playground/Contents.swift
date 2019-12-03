@@ -126,3 +126,43 @@ solution(&A)
  A = [-1, -3]
 solution(&A)
 
+import Foundation
+import Glibc
+
+//Q5-Get the number that is largest combination of given digits. For Example largest combination for 365 is 653
+
+public func solution(_ N : Int) -> Int {
+    let A = "\(N)"
+    let distinctArray = Array(A).sorted(by: { $0 > $1 })
+    return Int(String(distinctArray))!
+}
+solution(365)
+
+//Q6-Find number of 1s in the exponent of 11
+
+public func solution(_ N : Int) -> Int {
+    var count = 0
+    let number =  pow(11, Float(N))
+    let string = "\(number)"
+
+    for char in string {
+        if char == "1" {
+          count = count + 1
+        }
+    }
+    return count
+}
+ solution(7)
+
+//Q7-Find the lowest sum in the given array
+
+public func solution(_ A : inout [Int]) -> Int {
+    let firstIndex = 0
+    let secondIndex = firstIndex + 1
+    let distinctArray = A.sorted(by: { $0 < $1 })
+    let sum = distinctArray[firstIndex] + distinctArray[secondIndex]
+
+    return sum
+}
+
+solution([2,3,1,7,6,4,5])
