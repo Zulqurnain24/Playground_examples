@@ -6,7 +6,7 @@ import UIKit
 
 func fibonacciRecursiveNum1(num1: Int, num2: Int, steps: Int) {
     
-    if num1 == 0 {
+    if steps == 0 {
         print("1,")
     }
     
